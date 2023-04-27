@@ -347,6 +347,34 @@ InstructionSet RV32V extends Zicsr {
                 }
             }
         }
+        VLE8FF_U {
+            encoding: 0b000 :: 0b0 :: 0b00 :: vm[0:0] :: 0b10000 :: rs1[4:0] :: 0b000 :: vd[4:0] :: 0b0000111;
+            args_disass:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+            }
+        }
+        VLE16FF_U {
+            encoding: 0b000 :: 0b0 :: 0b00 :: vm[0:0] :: 0b10000 :: rs1[4:0] :: 0b101 :: vd[4:0] :: 0b0000111;
+            args_disass:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+            }
+        }
+        VLE32FF_U {
+            encoding: 0b000 :: 0b0 :: 0b00 :: vm[0:0] :: 0b10000 :: rs1[4:0] :: 0b110 :: vd[4:0] :: 0b0000111;
+            args_disass:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+            }
+        }
+        VLE64FF_U {
+            encoding: 0b000 :: 0b0 :: 0b00 :: vm[0:0] :: 0b10000 :: rs1[4:0] :: 0b111 :: vd[4:0] :: 0b0000111;
+            args_disass:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+            }
+        }
         VLM_V {
             encoding: 0b000 :: 0b0 :: 0b00 :: vm[0:0] :: 0b01011 :: rs1[4:0] :: 0b000 :: vd[4:0] :: 0b0000111;
             args_disass:"{name(vd)}, {name(rs1)}, {name(vm)}";
@@ -2043,4 +2071,3 @@ InstructionSet RV32V extends Zicsr {
 InsructionSet RV64V extends RV32V{
 
 }
-
