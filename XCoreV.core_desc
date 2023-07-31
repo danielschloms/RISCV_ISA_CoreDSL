@@ -252,7 +252,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         // 16-Bit x 16-Bit Multiplication
         CV_MULUN {
-            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               unsigned<32> result = ((unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0]) >> Is3;
@@ -260,23 +260,15 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULHHUN {
-            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               unsigned<32> result = ((unsigned)X[rs1][31:16] * (unsigned)X[rs2][31:16]) >> Is3;
               if(rd != 0) X[rd] = result[31:0];
             }
         }
-        CV_MULS {
-            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
-            behavior: {
-              signed<32> result = ((signed)X[rs1][15:0] * (signed)X[rs2][15:0]) >> Is3;
-              if(rd != 0) X[rd] = result[31:0];
-            }
-        }
         CV_MULSN {
-            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               signed<32> result = ((signed)X[rs1][15:0] * (signed)X[rs2][15:0]) >> Is3;
@@ -284,7 +276,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULHHSN {
-            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               signed<32> result = ((signed)X[rs1][31:16] * (signed)X[rs2][31:16]) >> Is3;
@@ -292,7 +284,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULURN {
-            encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0];
@@ -304,7 +296,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULHHURN {
-            encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (unsigned)X[rs1][31:16] * (unsigned)X[rs2][31:16];
@@ -316,7 +308,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULSRN {
-            encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][15:0] * (signed)X[rs2][15:0];
@@ -328,7 +320,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MULHHSRN {
-            encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][31:16] * (signed)X[rs2][31:16];
@@ -341,7 +333,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         // 16-Bit x 16-Bit Multiply-Accumulate
         CV_MACUN {
-            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               unsigned<32> result = ((unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0] + (unsigned)X[rd]) >> Is3;
@@ -349,7 +341,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACHHUN {
-            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               unsigned<32> result = ((unsigned)X[rs1][31:16] * (unsigned)X[rs2][31:16] + (unsigned)X[rd]) >> Is3;
@@ -373,7 +365,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACURN {
-            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				unsigned<30> product = (unsigned)(X[rs1][15:0]) * (unsigned)(X[rs2][15:0]);
@@ -385,7 +377,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACHHURN {
-            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				unsigned<30> product = (unsigned)(X[rs1][31:16]) * (unsigned)(X[rs2][31:16]);
@@ -397,7 +389,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACSRN {
-            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][15:0] * (signed)X[rs2][15:0];
@@ -409,7 +401,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACHHSRN {
-            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][31:16] * (signed)X[rs2][31:16];
