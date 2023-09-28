@@ -1,0 +1,8 @@
+import "RV32I.core_desc"
+
+// TODO: review instruction description wrt. Spec after type system is fixed
+InstructionSet RV32Zfinx extends RV32F {
+    architectural_state {
+        register unsigned<FLEN> &F[32] = X;
+    }
+}
