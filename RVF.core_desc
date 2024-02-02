@@ -27,6 +27,12 @@ InstructionSet RV32F extends Zicsr {
         extern unsigned<32> unbox_s(unsigned<64>);
         extern unsigned<32> fclass_s(unsigned<32>);
         extern unsigned<32> fget_flags();
+
+        unsigned<3> get_rm(unsigned<3> rm) {
+            if (rm == 7) rm = FCSR[7:5];
+            if (rm > 4) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
+            return rm;
+        }
     }
 
     instructions {
@@ -59,9 +65,9 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 //F[rd]f = F[rs1]f * F[rs2]f + F[rs3]f;
                 if (FLEN == 32)
-                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 0, rm<7? (unsigned char)rm:(unsigned char)FCSR);
+                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 0, get_rm(rm));
                 else { // NaN boxing
-                    unsigned<32> res = fmadd_s(unbox_s(F[rs1]), unbox_s(F[rs2]), unbox_s(F[rs3]), 0, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fmadd_s(unbox_s(F[rs1]), unbox_s(F[rs2]), unbox_s(F[rs3]), 0, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -75,9 +81,9 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 //F[rd]f = F[rs1]f * F[rs2]f - F[rs3]f;
                 if (FLEN == 32)
-                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 1, rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 1, get_rm(rm));
                 else { // NaN boxing
-                    unsigned<32> res = fmadd_s(unbox_s(F[rs1]), unbox_s(F[rs2]), unbox_s(F[rs3]), 1, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fmadd_s(unbox_s(F[rs1]), unbox_s(F[rs2]), unbox_s(F[rs3]), 1, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -91,12 +97,12 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 //F[rd]f = -F[rs1]f * F[rs2]f + F[rs3]f;
                 if (FLEN == 32)
-                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 2, rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 2, get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
                     unsigned<32> frs3 = unbox_s(F[rs3]);
-                    unsigned<32> res = fmadd_s(frs1, frs2, frs3, 2, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fmadd_s(frs1, frs2, frs3, 2, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -110,12 +116,12 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
             //F[rd]f = -F[rs1]f * F[rs2]f - F[rs3]f;
                 if (FLEN == 32)
-                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 3, rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fmadd_s(F[rs1], F[rs2], F[rs3], 3, get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
                     unsigned<32> frs3 = unbox_s(F[rs3]);
-                    unsigned<32> res = fmadd_s(frs1, frs2, frs3, 3, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fmadd_s(frs1, frs2, frs3, 3, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -129,11 +135,11 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 // F[rd]f = F[rs1]f + F[rs2]f;
                 if (FLEN == 32)
-                    F[rd] = fadd_s(F[rs1], F[rs2], rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fadd_s(F[rs1], F[rs2], get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
-                    unsigned<32> res = fadd_s(frs1, frs2, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fadd_s(frs1, frs2, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -147,11 +153,11 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 // F[rd]f = F[rs1]f - F[rs2]f;
                 if (FLEN == 32)
-                    F[rd] = fsub_s(F[rs1], F[rs2], rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fsub_s(F[rs1], F[rs2], get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
-                    unsigned<32> res = fsub_s(frs1, frs2, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fsub_s(frs1, frs2, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -165,11 +171,11 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 // F[rd]f = F[rs1]f * F[rs2]f;
                 if (FLEN == 32)
-                    F[rd] = fmul_s(F[rs1], F[rs2], rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fmul_s(F[rs1], F[rs2], get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
-                    unsigned<32> res = fmul_s(frs1, frs2, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fmul_s(frs1, frs2, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -183,11 +189,11 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 // F[rd]f = F[rs1]f / F[rs2]f;
                 if (FLEN == 32)
-                    F[rd] = fdiv_s(F[rs1], F[rs2], rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fdiv_s(F[rs1], F[rs2], get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     unsigned<32> frs2 = unbox_s(F[rs2]);
-                    unsigned<32> res = fdiv_s(frs1, frs2, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fdiv_s(frs1, frs2, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -201,10 +207,10 @@ InstructionSet RV32F extends Zicsr {
             behavior: {
                 //F[rd]f = sqrt(F[rs1]f);
                 if (FLEN == 32)
-                    F[rd] = fsqrt_s(F[rs1], rm<7? rm: (unsigned char)FCSR);
+                    F[rd] = fsqrt_s(F[rs1], get_rm(rm));
                 else { // NaN boxing
                     unsigned<32> frs1 = unbox_s(F[rs1]);
-                    unsigned<32> res = fsqrt_s(frs1, rm<7? rm: (unsigned char)FCSR);
+                    unsigned<32> res = fsqrt_s(frs1, get_rm(rm));
                     F[rd] = ((signed<64>)-1 << 32) | (unsigned<FLEN>)res;
                 }
                 unsigned<32> flags = fget_flags();
@@ -322,7 +328,7 @@ InstructionSet RV32F extends Zicsr {
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     res = fcvt_s(frs1, 1, rm);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<64>)(signed)res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(signed)res;
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }
@@ -425,7 +431,7 @@ InstructionSet RV32F extends Zicsr {
             encoding: 7'b1110000 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010011;
             assembly:"{name(rd)}, f {rs1}";
             behavior: {
-                if ((rd % RFS) != 0) X[rd % RFS] = (signed)(unsigned<32>)F[rs1];
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(signed<32>)F[rs1];
             }
         }
 
