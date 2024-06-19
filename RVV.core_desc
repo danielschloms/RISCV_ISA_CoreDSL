@@ -39,7 +39,7 @@ Vector Single-Width Floating-Point reduction Instructions
 /*
 */
 
-import "RV32I.core_desc"
+import "RVI.core_desc"
 import "RISCVBase.core_desc"
 
 InstructionSet RV32V extends RVV {
@@ -664,7 +664,7 @@ InstructionSet RVZve32x extends RVVBase {
             encoding: 1'b0 :: zimm[10:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             assembly:"{name(rd)}, {name(rs1)}, {zimm}";
             behavior: {
-                if(!(CSR[CSR_MSTATUS] & MSTATUS_VS)){
+                if(!(CSR[RV_CSR_MSTATUS] & RV_MSTATUS_VS)){
                     raise(0, 2);  // vpu not enabled
                 }
 
