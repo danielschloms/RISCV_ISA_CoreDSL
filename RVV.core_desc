@@ -727,7 +727,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VSETIVLI {
-            encoding: 1'b0 :: 1'b0 :: zimm[9:0] :: uimm[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+            encoding: 1'b1 :: 1'b1 :: zimm[9:0] :: uimm[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             assembly:"{name(rd)}, {name(rs1)}, {zimm}";
             behavior: {
                 unsigned<32> _vlmax = 0;
