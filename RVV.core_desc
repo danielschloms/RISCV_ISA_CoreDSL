@@ -661,12 +661,13 @@ InstructionSet RVZve32x extends RVVBase {
     instructions {
         // -- Configuration-Setting Instructions
         VSETVLI {
+            // encoding: 1'b0 :: 1'b0 :: zimm[9:0] :: uimm[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             encoding: 1'b0 :: zimm[10:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             assembly:"{name(rd)}, {name(rs1)}, {zimm}";
             behavior: {
-                if(!(CSR[RV_CSR_MSTATUS] & RV_MSTATUS_VS)){
-                    raise(0, 2);  // vpu not enabled
-                }
+                // if(!(CSR[RV_CSR_MSTATUS] & RV_MSTATUS_VS)){
+                //     raise(0, 2);  // vpu not enabled
+                // }
 
                 unsigned<3> sew[3]  = vtype_extractSEW(zimm);
                 unsigned<3> lmul[3] = vtype_extractLMUL(zimm);
