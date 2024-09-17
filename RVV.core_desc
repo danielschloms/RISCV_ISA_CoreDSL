@@ -587,9 +587,6 @@ InstructionSet RVZve32x extends RVVBase {
     functions {
         extern unsigned<8> etiss_vload_encoded_unitstride(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
         extern unsigned<8> etiss_vstore_encoded_unitstride(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
-        extern unsigned<8> vmv_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmv_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmv_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         extern unsigned<8> vmv_xs(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         extern unsigned<8> vmv_sx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         extern unsigned<8> vslideup_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
@@ -600,6 +597,14 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vslide1down_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         
         // TODO: Divide into sections
+        // Zve32x:
+        // - EEW 8, 16, 32
+        // - Vector configuration instructions
+
+        // 6. Configuration-Setting Instructions (vsetvli/vsetivli/vsetvl)
+        // In CoreDSL
+
+        // 7. Vector Loads and Stores
 
         // 11. Vector Integer Arithmetic Instructions
         // 11.1. Vector Single-Width Integer Add and Subtract
@@ -642,21 +647,21 @@ InstructionSet RVZve32x extends RVVBase {
 
         // 11.4. Vector Integer Add-with-Carry / Subtract-with-Borrow Instructions
         // TODO: Implement in softvector
-        extern unsigned<8> vadc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vadc_vim(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vadc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmadc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmadc_vim(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmadc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vadc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vadc_vim(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vadc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        // vmadc_vvm: _vv version with vm = 0
+        // vmadc_vim: _vi version with vm = 0
+        // vmadc_vxm: _vx version with vm = 0
         extern unsigned<8> vmadc_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmadc_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmadc_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsbc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vsbc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsbc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmsbc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsbc_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
-        extern unsigned<8> vmsbc_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        // extern unsigned<8> vsbc_vvm(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        // extern unsigned<8> vsbc_vxm(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        // vmsbc_vvm: _vv version with vm = 0
+        // vmsbc_vxm: _vx version with vm = 0
+        // extern unsigned<8> vmsbc_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        // extern unsigned<8> vmsbc_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         
         // 11.5. Vector Bitwise Logical Instructions
         extern unsigned<8> vand_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
@@ -690,7 +695,7 @@ InstructionSet RVZve32x extends RVVBase {
         // vnsra.wi
 
         // 11.8. Vector Integer Compare Instructions
-        // TODO: All test fail
+        // TODO: All test fail (https://github.com/PhilippvK/riscv-tests (rvv-2024-new): rv32uv tests)
         extern unsigned<8> vmseq_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmseq_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmseq_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
@@ -744,6 +749,7 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vremu_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);   
         
         // 11.12. Vector Widening Integer Multiply Instructions
+        // TODO: Missing
         // vwmul.vv
         // vwmul.vx
         // vwmulu.vv
@@ -752,9 +758,55 @@ InstructionSet RVZve32x extends RVVBase {
         // vwmulsu.vx
 
         // 11.13. Vector Single-Width Integer Multiply-Add Instructions
+        // TODO: Missing
+        // vmacc.vv
+        // vmacc.vx
+        // vnmsac.vv
+        // vnmsac.vx
+        // vmadd.vv
+        // vmadd.vx
+        // vnmsub.vv
+        // vnmsub.vx
+
         // 11.14. Vector Widening Integer Multiply-Add Instructions
+        // TODO: Missing
+        // vwmaccu.vv
+        // vwmaccu.vx
+        // vwmacc.vv
+        // vwmacc.vx
+        // vwmaccsu.vv
+        // vwmaccsu.vx
+        // vwmaccus.vx
+
         // 11.15. Vector Integer Merge Instructions
+        // TODO: Missing
+        // vmerge.vvm
+        // vmerge.vxm
+        // vmerge.vim        
+
         // 11.16. Vector Integer Move Instructions
+        extern unsigned<8> vmv_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmv_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmv_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+
+        // 16. Vector Permutation Instructions
+        // Zve32x, Zve64x: no floating-point operands
+
+        // 16.1. Integer Scalar Move Instructions
+
+        // 16.2. Floating-Point Scalar Move Instructions
+        // Not in Zve32x
+
+        // 16.3. Vector Slide Instructions
+
+        // 16.4. Vector Register Gather Instructions
+
+        // 16.5. Vector Compress Instruction
+
+        // 16.6. Whole Vector Register Move
+
+
+
     }
     instructions {
         // -- Configuration-Setting Instructions
@@ -828,9 +880,11 @@ InstructionSet RVZve32x extends RVVBase {
             encoding: 1'b1 :: 1'b1 :: zimm[9:0] :: uimm[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             assembly:"{name(rd)}, {name(rs1)}, {zimm}";
             behavior: {
+                // TODO: Missing
                 unsigned<32> _vlmax = 0;
             }
         }
+
         VSETVL {
             encoding: 1'b1 :: 6'b000000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
@@ -2553,7 +2607,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vadc_vvm(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
+                unsigned<XLEN> ret = vadc_vvm(V, _vtype, vd, vs1, vs2, _vstart, _vlen, _vl);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -2565,7 +2619,7 @@ InstructionSet RVZve32x extends RVVBase {
 
         VADC_VXM {
             encoding: 6'b010000 :: 1'b0 :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            assembly:"{name(vd)}, {name(rs1)}}";
             behavior: {
 
                 unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
@@ -2573,7 +2627,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vadc_vxm(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+                unsigned<XLEN> ret = vadc_vxm(V, X, _vtype, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -2585,7 +2639,7 @@ InstructionSet RVZve32x extends RVVBase {
 
         VADC_VIM {
             encoding: 6'b010000 :: 1'b0 :: vs2[4:0] :: simm5[4:0] :: 3'b011 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(rs1)}, {name(vm)}";
+            assembly:"{name(vd)}, {name(simm5)}}";
             behavior: {
 
                 unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
@@ -2593,7 +2647,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vadc_vim(V, _vtype, vm, vd, vs2, simm5, _vstart, _vlen, _vl);
+                unsigned<XLEN> ret = vadc_vim(V, _vtype, vd, vs2, simm5, _vstart, _vlen, _vl);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -2602,70 +2656,10 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
-
-        VMADC_VVM {
-            encoding: 6'b010001 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}";
-            behavior: {
-
-                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-                unsigned<XLEN> _vl = CSR[VL_ADDR];
-                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
-
-                unsigned<XLEN> ret = vmadc_vvm(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
-                    CSR[VSTART_ADDR] = ret >> 8;
-                    raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
-                }
-            }
-        }
-
-        VMADC_VXM {
-            encoding: 6'b010001 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(rs1)}, {name(vm)}";
-            behavior: {
-
-                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-                unsigned<XLEN> _vl = CSR[VL_ADDR];
-                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
-
-                unsigned<XLEN> ret = vmadc_vxm(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
-                    CSR[VSTART_ADDR] = ret >> 8;
-                    raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
-                }
-            }
-        }
-
-        VMADC_VIM {
-            encoding: 6'b010001 :: vm[0:0] :: vs2[4:0] :: simm5[4:0] :: 3'b011 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(rs1)}, {name(vm)}";
-            behavior: {
-
-                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-                unsigned<XLEN> _vl = CSR[VL_ADDR];
-                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
-
-                unsigned<XLEN> ret = vmadc_vim(V, _vtype, vm, vd, vs2, simm5, _vstart, _vlen, _vl);
-                if(ret != 0){
-                    CSR[VSTART_ADDR] = ret >> 8;
-                    raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
-                }
-            }
-        }
-
+        
         VMADC_VV {
             encoding: 6'b010001 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}";
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
                 unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
@@ -2732,7 +2726,7 @@ InstructionSet RVZve32x extends RVVBase {
         // vmsbc.vxm   vd, vs2, rs1, v0  # Vector-scalar
         // vmsbc.vv    vd, vs2, vs1      # Vector-vector, no borrow-in
         // vmsbc.vx    vd, vs2, rs1      # Vector-scalar, no borrow-in
-        
+        /*
         VSBC_VVM {
             encoding: 6'b010010 :: 1'b0 :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}";
@@ -2764,46 +2758,6 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsbc_vxm(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
-                    CSR[VSTART_ADDR] = ret >> 8;
-                    raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
-                }
-            }
-        }
-
-        VMSBC_VVM {
-            encoding: 6'b010011 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}";
-            behavior: {
-
-                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-                unsigned<XLEN> _vl = CSR[VL_ADDR];
-                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
-
-                unsigned<XLEN> ret = vmsbc_vvm(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
-                    CSR[VSTART_ADDR] = ret >> 8;
-                    raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
-                }
-            }
-        }
-
-        VMSBC_VXM {
-            encoding: 6'b010011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(rs1)}, {name(vm)}";
-            behavior: {
-
-                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-                unsigned<XLEN> _vl = CSR[VL_ADDR];
-                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
-
-                unsigned<XLEN> ret = vmsbc_vxm(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -2852,7 +2806,7 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
-
+        */
         // End 11.4 Vector Integer Add-with-Carry / Subtract-with-Borrow Instructions
 
 
@@ -3240,6 +3194,7 @@ InstructionSet RVZve32x extends RVVBase {
         // vwmaccu.vx?  // vd, rs1, vs2, vm # vd[i] = +(x[rs1] * vs2[i]) + vd[i]
         // funct3=OPMVX
         // Widening signed-integer multiply-add, overwrite addend
+        /*
         VWMACC_VV {
             encoding: 6'b111101 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
@@ -3254,7 +3209,7 @@ InstructionSet RVZve32x extends RVVBase {
             behavior: {
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
             }
-        }
+        }*/
         // Widening signed-unsigned-integer multiply-add, overwrite addend
         // funct6=111111
         // vwmaccsu.vv?  // vd, vs1, vs2, vm # vd[i] = +(signed(vs1[i]) * unsigned(vs2[i])) + vd[i]
