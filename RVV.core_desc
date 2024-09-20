@@ -613,9 +613,8 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vadd_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         extern unsigned<8> vsub_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vsub_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
-        // TODO: Missing 
-        // vrsub.vx
-        // vrsub.vi
+        extern unsigned<8> vrsub_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vrsub_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
 
         // 11.2. Vector Widening Integer Add/Subtract
         // TODO: All tests fail
@@ -758,15 +757,14 @@ InstructionSet RVZve32x extends RVVBase {
         // vwmulsu.vx
 
         // 11.13. Vector Single-Width Integer Multiply-Add Instructions
-        // TODO: Missing
-        // vmacc.vv
-        // vmacc.vx
-        // vnmsac.vv
-        // vnmsac.vx
-        // vmadd.vv
-        // vmadd.vx
-        // vnmsub.vv
-        // vnmsub.vx
+        extern unsigned<8> vmacc_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmacc_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnmsac_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vnmsac_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmadd_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmadd_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnmsub_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vnmsub_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
 
         // 11.14. Vector Widening Integer Multiply-Add Instructions
         // TODO: Missing
@@ -2246,6 +2244,7 @@ InstructionSet RVZve32x extends RVVBase {
             }
         }
 
+        // 11.11. Vector Integer Divide Instructions
         VDIV_VV {
             // vector-vector
             encoding: 6'b100001 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
@@ -2405,6 +2404,181 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
+        // End 11.11.
+
+        // 11.12. Vector Widening Integer Multiply Instructions
+
+        // End 11.12.
+
+        // 11.13. Vector Single-Width Integer Multiply-Add Instructions
+        VMACC_VV {
+            // Vector-vector
+            encoding: 6'b101101 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vmacc_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VMACC_VX {
+            // Vector-scalar
+            encoding: 6'b101101 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+
+               unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+               unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+               unsigned<XLEN> _vl = CSR[VL_ADDR];
+               unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+               unsigned<XLEN> ret = vmacc_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+               if(ret != 0){
+                   CSR[VSTART_ADDR] = ret >> 8;
+                   raise(0, 2);
+               } else{
+                   CSR[VSTART_ADDR] = 0;
+               }
+           }
+        }
+
+        VNMSAC_VV {
+            // Vector-vector
+            encoding: 6'b101111 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vnmsac_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VNMSAC_VX {
+            // Vector-scalar
+            encoding: 6'b101111 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+
+               unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+               unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+               unsigned<XLEN> _vl = CSR[VL_ADDR];
+               unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+               unsigned<XLEN> ret = vnmsac_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+               if(ret != 0){
+                   CSR[VSTART_ADDR] = ret >> 8;
+                   raise(0, 2);
+               } else{
+                   CSR[VSTART_ADDR] = 0;
+               }
+           }
+        }
+
+        VMADD_VV {
+            // Vector-vector
+            encoding: 6'b101001 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vmadd_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VMADD_VX {
+            // Vector-scalar
+            encoding: 6'b101001 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+
+               unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+               unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+               unsigned<XLEN> _vl = CSR[VL_ADDR];
+               unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+               unsigned<XLEN> ret = vmadd_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+               if(ret != 0){
+                   CSR[VSTART_ADDR] = ret >> 8;
+                   raise(0, 2);
+               } else{
+                   CSR[VSTART_ADDR] = 0;
+               }
+           }
+        }
+
+        VNMSUB_VV {
+            // Vector-vector
+            encoding: 6'b101011 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vnmsub_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VNMSUB_VX {
+            // Vector-scalar
+            encoding: 6'b101011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+
+               unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+               unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+               unsigned<XLEN> _vl = CSR[VL_ADDR];
+               unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+               unsigned<XLEN> ret = vnmsub_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+               if(ret != 0){
+                   CSR[VSTART_ADDR] = ret >> 8;
+                   raise(0, 2);
+               } else{
+                   CSR[VSTART_ADDR] = 0;
+               }
+           }
+        }
+        // End 11.13.
 
         VMAX_VV {
             // Vector-vector
@@ -2845,7 +3019,8 @@ InstructionSet RVZve32x extends RVVBase {
         // vnsra.wi?  // vd, vs2, uimm, vm # vector-immediate
         // funct3=OPIVI
         ////
-        // = Vector Single-Width Integer Add and Subtract
+
+        // 11.1. Vector Single-Width Integer Add and Subtract
         // Integer adds
         VADD_VV {
             // Vector-vector
@@ -2867,6 +3042,7 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
+
         VADD_VX {
             // vector-scalar
             encoding: 6'b000000 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
@@ -2887,6 +3063,7 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
+
         VADD_VI {
             // vector-immediate
             encoding: 6'b000000 :: vm[0:0] :: vs2[4:0] :: simm5[4:0] :: 3'b011 :: vd[4:0] :: 7'b1010111;
@@ -2907,6 +3084,7 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
+
         // Integer subtract
         VSUB_VV {
             // Vector-vector
@@ -2949,6 +3127,51 @@ InstructionSet RVZve32x extends RVVBase {
                }
            }
         }
+
+        VRSUB_VX {
+            // Vector-scalar
+            encoding: 6'b000011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+
+               unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+               unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+               unsigned<XLEN> _vl = CSR[VL_ADDR];
+               unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+               unsigned<XLEN> ret = vrsub_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+               if(ret != 0){
+                   CSR[VSTART_ADDR] = ret >> 8;
+                   raise(0, 2);
+               } else{
+                   CSR[VSTART_ADDR] = 0;
+               }
+           }
+        }
+
+        VRSUB_VI {
+            // vector-immediate
+            encoding: 6'b000011 :: vm[0:0] :: vs2[4:0] :: simm5[4:0] :: 3'b011 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {imm}, {name(vm)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vrsub_vi(V, _vtype, vm, vd, vs2, simm5, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        // End 11.1.
+
         // Integer reverse subtract
         // funct6=000011
         // vrsub.vi?
