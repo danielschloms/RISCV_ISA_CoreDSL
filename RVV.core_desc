@@ -637,6 +637,7 @@ InstructionSet RVZve32x extends RVVBase {
         
         // 11.3. Vector Integer Extension
         // TODO: Missing
+        extern unsigned<8> vext_vf(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> extension_encoding, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         // vzext.vf2
         // vsext.vf2
         // vzext.vf4
@@ -3169,7 +3170,6 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
-
         // End 11.1.
 
         // Integer reverse subtract
@@ -3179,53 +3179,120 @@ InstructionSet RVZve32x extends RVVBase {
         // vrsub.vx?
         // funct3=OPIVI
         ////
-        // Vector Integer Extension
+
+        // 11.3. Vector Integer Extension
         VZEXT_VF2 {
             // Zero-extend SEW/2 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00110 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00110 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00110, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         VSEXT_VF2 {
             // Sign-extend SEW/2 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00111 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00111 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00111, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         VZEXT_VF4 {
             // Zero-extend SEW/4 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00100 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00100 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00100, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         VSEXT_VF4 {
             // Sign-extend SEW/4 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00101 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00101 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00101, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         VZEXT_VF8 {
             // Zero-extend SEW/8 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00100 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00010 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00010, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         VSEXT_VF8 {
             // Sign-extend SEW/8 source to SEW destination
-            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00011 :: 3'b010 :: rd[4:0] :: 7'b1010111;
+            encoding: 6'b010010 :: vm[0:0] :: vs2[4:0] :: 5'b00011 :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vm)}";
             behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
                 unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vext_vf(V, _vtype, vm, vd, vs2, 0b00011, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
             }
         }
         ////
