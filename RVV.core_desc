@@ -3341,7 +3341,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
         VWSUBU_VV {
             // vector-vector
-            encoding: 6'b110010 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110010 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
@@ -3362,7 +3362,7 @@ InstructionSet RVZve32x extends RVVBase {
 
         VWSUBU_VX {
             // vector-scalar
-            encoding: 6'b110010 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110010 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
@@ -3446,7 +3446,7 @@ InstructionSet RVZve32x extends RVVBase {
 
         VWSUB_VX {
             // vector-scalar
-            encoding: 6'b110011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
@@ -3550,7 +3550,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWADDU_W_VV {
-            encoding: 6'b110100 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110100 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
@@ -3570,7 +3570,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWADDU_W_VX {
-            encoding: 6'b110100 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110100 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
@@ -3590,7 +3590,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWADD_W_VV {
-            encoding: 6'b110101 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110101 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
@@ -3610,7 +3610,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWADD_W_VX {
-            encoding: 6'b110101 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110101 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
@@ -3630,7 +3630,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWSUBU_W_VV {
-            encoding: 6'b110110 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110110 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
@@ -3650,7 +3650,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWSUBU_W_VX {
-            encoding: 6'b110110 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110110 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
@@ -3670,7 +3670,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWSUB_W_VV {
-            encoding: 6'b110111 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110111 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
             behavior: {
 
@@ -3690,7 +3690,7 @@ InstructionSet RVZve32x extends RVVBase {
         }
 
         VWSUB_W_VX {
-            encoding: 6'b110111 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            encoding: 6'b110111 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
             behavior: {
 
