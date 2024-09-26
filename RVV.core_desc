@@ -694,7 +694,6 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vnsra_wx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
 
         // 11.8. Vector Integer Compare Instructions
-        // TODO: All test fail (https://github.com/PhilippvK/riscv-tests (rvv-2024-new): rv32uv tests)
         extern unsigned<8> vmseq_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmseq_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
         extern unsigned<8> vmseq_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
@@ -747,13 +746,12 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vremu_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);   
         
         // 11.12. Vector Widening Integer Multiply Instructions
-        // TODO: Missing
-        // vwmul.vv
-        // vwmul.vx
-        // vwmulu.vv
-        // vwmulu.vx
-        // vwmulsu.vv
-        // vwmulsu.vx
+        extern unsigned<8> vwmul_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vwmul_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);   
+        extern unsigned<8> vwmulu_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vwmulu_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);   
+        extern unsigned<8> vwmulsu_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vwmulsu_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);   
 
         // 11.13. Vector Single-Width Integer Multiply-Add Instructions
         extern unsigned<8> vmacc_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
@@ -3543,7 +3541,119 @@ InstructionSet RVZve32x extends RVVBase {
         // End 11.11.
 
         // 11.12. Vector Widening Integer Multiply Instructions
+        VWMUL_VV {
+            encoding: 6'b111011 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
+                unsigned<XLEN> ret = vwmul_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VWMUL_VX {
+            encoding: 6'b111011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vwmul_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VWMULU_VV {
+            encoding: 6'b111000 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vwmulu_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VWMULU_VX {
+            encoding: 6'b111000 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vwmulu_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VWMULSU_VV {
+            encoding: 6'b111010 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vwmulsu_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VWMULSU_VX {
+            encoding: 6'b111010 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b110 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
+            behavior: {
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vwmulsu_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
         // End 11.12.
 
         // 11.13. Vector Single-Width Integer Multiply-Add Instructions
@@ -3969,30 +4079,7 @@ InstructionSet RVZve32x extends RVVBase {
         // vwmaccus.vx  // vd, rs1, vs2, vm # vd[i] = +(unsigned(x[rs1]) * signed(vs2[i])) + vd[i]
         // funct3=OPMVX
         ////
-        // == Vector Widening Integer Multiply Instructions
-        // Widening signed-integer multiply
-        VWMUL_VV {
-            encoding: 6'b111011 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
-            behavior: {
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-            }
-        }
 
-        VWMUL_VX {
-            encoding: 6'b111011 :: vm[0:0] :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
-            assembly:"{name(vd)}, {name(vs2)}, {name(rs1)}, {name(vm)}";
-            behavior: {
-                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
-            }
-        }
-        // Widening unsigned-integer multiply
-        // vwmulu.vv?
-        // vwmulu.vx
-        // Widening signed(vs2)-unsigned integer multiply
-        // vwmulsu.vv?
-        // vwmulsu.vx?
-        ////
         VWMACC_VV {
             encoding: 6'b111101 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b010 :: vd[4:0] :: 7'b1010111;
             assembly:"{name(vd)}, {name(vs2)}, {name(vs1)}, {name(vm)}";
