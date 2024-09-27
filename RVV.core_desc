@@ -3550,7 +3550,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vwmul_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                unsigned<XLEN> ret = vwmul_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -3588,7 +3588,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vwmulu_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                unsigned<XLEN> ret = vwmulu_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
@@ -3626,7 +3626,7 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vl = CSR[VL_ADDR];
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
-                unsigned<XLEN> ret = vwmulsu_vv(V, _vtype, vm, vd, vs2, vs1, _vstart, _vlen, _vl);
+                unsigned<XLEN> ret = vwmulsu_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
                 if(ret != 0){
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
