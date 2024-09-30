@@ -773,10 +773,9 @@ InstructionSet RVZve32x extends RVVBase {
         extern unsigned<8> vwmaccus_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
         
         // 11.15. Vector Integer Merge Instructions
-        // TODO: Missing
-        // vmerge.vvm
-        // vmerge.vxm
-        // vmerge.vim        
+        extern unsigned<8> vmerge_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmerge_vi(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
+        extern unsigned<8> vmerge_vx(char* pV, char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL, unsigned<8> pXLEN);
 
         // 11.16. Vector Integer Move Instructions
         extern unsigned<8> vmv_vv(char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<16> pVSTART, unsigned<16> pVLEN, unsigned<16> pVL);
@@ -3975,6 +3974,71 @@ InstructionSet RVZve32x extends RVVBase {
         }
         // End 11.14.
 
+        // 11.15. Vector Integer Merge Instructions
+        VMERGE_V_V {
+            // vd[i] = vs1[i]
+            encoding: 6'b010111 :: 1'b0 :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(vs1)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vmerge_vv(V, _vtype, vd, vs1, vs2, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VMERGE_V_X {
+            // vd[i] = x[rs1]
+            encoding: 6'b010111 :: 1'b0 :: vs2[4:0] :: rs1[4:0] :: 3'b100 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(rs1)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vmerge_vx(V, X, _vtype, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+
+        VMERGE_V_I {
+            // vd[i] = imm
+            encoding: 6'b010111 :: 1'b0 :: vs2[4:0] :: simm5[4:0] :: 3'b011 :: vd[4:0] :: 7'b1010111;
+            assembly:"{name(vd)}, {name(simm5)}";
+            behavior: {
+
+                unsigned<XLEN> _vtype = CSR[VTYPE_ADDR];
+                unsigned<XLEN> _vstart = CSR[VSTART_ADDR];
+                unsigned<XLEN> _vl = CSR[VL_ADDR];
+                unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
+
+                unsigned<XLEN> ret = vmerge_vi(V, _vtype, vd, vs2, simm5, _vstart, _vlen, _vl);
+                if(ret != 0){
+                    CSR[VSTART_ADDR] = ret >> 8;
+                    raise(0, 2);
+                } else{
+                    CSR[VSTART_ADDR] = 0;
+                }
+            }
+        }
+        // End 11.15.
+
         VMAX_VV {
             // Vector-vector
             encoding: 6'b000111 :: vm[0:0] :: vs2[4:0] :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
@@ -4809,8 +4873,7 @@ InstructionSet RVZve32x extends RVVBase {
             }
         }
 
-        ////
-        // == Vector Integer Move Instructions
+        // 11.16. Vector Integer Move Instructions
         VMV_V_V {
             // vd[i] = vs1[i]
             encoding: 6'b010111 :: 1'b1 :: 5'b00000 :: vs1[4:0] :: 3'b000 :: vd[4:0] :: 7'b1010111;
@@ -4871,8 +4934,7 @@ InstructionSet RVZve32x extends RVVBase {
                 }
             }
         }
-        ////
-
+        // End 11.16.
 
         // -- Vector Fixed-point Arithmetic Instructions
         // vaadd.vv?
