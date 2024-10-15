@@ -4974,11 +4974,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsaddu_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -4994,11 +4997,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsaddu_vi(V, _vtype, vm, vd, vs2, uimm5, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5014,11 +5020,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsaddu_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5034,11 +5043,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsadd_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5054,11 +5066,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsadd_vi(V, _vtype, vm, vd, vs2, simm5, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5074,11 +5089,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vsadd_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5094,11 +5112,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vssubu_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5114,11 +5135,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vssubu_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5134,11 +5158,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vssub_vv(V, _vtype, vm, vd, vs1, vs2, _vstart, _vlen, _vl);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5154,11 +5181,14 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 unsigned<XLEN> ret = vssub_vx(V, X, _vtype, vm, vd, vs2, rs1, _vstart, _vlen, _vl, XLEN);
-                if(ret != 0){
+                if(ret == 0){
+                    CSR[VSTART_ADDR] = 0;
+                } else if (ret == NO_EXCEPT_FP_SAT) {
+                    CSR[VSTART_ADDR] = 0;
+                    CSR[VXSAT_ADDR] = 1;
+                } else{
                     CSR[VSTART_ADDR] = ret >> 8;
                     raise(0, 2);
-                } else{
-                    CSR[VSTART_ADDR] = 0;
                 }
             }
         }
@@ -5646,6 +5676,9 @@ InstructionSet RVVBase extends Zicsr {
 
         // vector register address space
         extern unsigned char V[VLEN /8 * 32];
+
+        // fixed-point saturation return code
+        unsigned<32> NO_EXCEPT_FP_SAT = 1;
     }
     functions {
         extern unsigned<8> vtype_extractSEW(unsigned<16>);
