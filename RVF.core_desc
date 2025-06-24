@@ -26,6 +26,14 @@ InstructionSet RV32F extends Zicsr {
         extern unsigned<32> fclass_s(unsigned<32>);
         extern unsigned<32> fget_flags();
 
+        unsigned<FLEN> NaNBox32(unsigned<32> val){
+            if(FLEN == 32) return (unsigned<FLEN>)val;
+            else {
+                unsigned<FLEN> box = ~((unsigned<FLEN>)0);
+                return (unsigned<FLEN>)(box :: val);
+            }
+        }
+
         unsigned<3> get_rm(unsigned<3> rm) {
             if (rm == 7) rm = FCSR[7:5];
             if (rm > 4) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);

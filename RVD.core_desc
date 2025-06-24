@@ -20,6 +20,13 @@ InstructionSet RV32D extends RV32F {
         extern unsigned<64> fconv_f2d(unsigned<32>, unsigned char);
         extern unsigned<64> unbox_d(unsigned<64>);
         extern unsigned<64> fclass_d(unsigned<64>);
+        unsigned<FLEN> NaNBox64(unsigned<64> val){
+            if(FLEN == 64) return (unsigned<FLEN>)val;
+            else {
+                unsigned<FLEN> box = ~((unsigned<FLEN>)0);
+                return (unsigned<FLEN>)(box :: val);
+            }
+        }
     }
 
     instructions {
