@@ -502,11 +502,7 @@ InstructionSet RV64I extends RV32I {
     }
 }
 
-InstructionSet Zicsr extends RISCVBase {
-    architectural_state {
-        unsigned int CSR_SIZE = 4096;
-        extern unsigned<XLEN> CSR[CSR_SIZE];
-    }
+InstructionSet Zicsr extends RVPrivBase {
 
     functions {
         bool extension_enabled(char extension) {
