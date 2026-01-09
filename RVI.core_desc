@@ -320,6 +320,12 @@ InstructionSet RV32I extends RISCVBase {
             behavior: if ((rd % RFS) != 0) X[rd % RFS] = X[rs1 % RFS] & X[rs2 % RFS];
         }
 
+        CUSTOM0 {
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1110011;
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            behavior: if ((rd % RFS) != 0) X[rd % RFS] = X[rs1 % RFS] & X[rs2 % RFS];
+        }
+
         FENCE {
             encoding: fm[3:0] :: pred[3:0] :: succ[3:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0001111;
             assembly:"{pred}, {succ} ({fm} , {name(rs1)}, {name(rd)})";
