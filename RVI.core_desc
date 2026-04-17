@@ -144,7 +144,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rd)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1 % RFS] + (signed)imm;
-                signed<16> res = (signed<16>)MEM[load_address];
+                signed<16> res = (signed<16>)MEM[load_address+1:load_address];
                 if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)res;
              }
         }
@@ -154,7 +154,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rd)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1 % RFS] + (signed)imm;
-                signed<32> res = (signed<32>)MEM[load_address];
+                signed<32> res = (signed<32>)MEM[load_address+3:load_address];
                 if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)res;
             }
         }
@@ -174,7 +174,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rd)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1 % RFS] + (signed)imm;
-                unsigned<16> res = (unsigned<16>)MEM[load_address];
+                unsigned<16> res = (unsigned<16>)MEM[load_address+1:load_address];
                 if((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)res;
             }
         }
@@ -193,7 +193,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rs2)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = X[rs1 % RFS] + (signed)imm;
-                MEM[store_address] = (signed<16>)X[rs2 % RFS];
+                MEM[store_address+1:store_address] = (signed<16>)X[rs2 % RFS];
             }
         }
 
@@ -202,7 +202,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rs2)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = X[rs1 % RFS] + (signed)imm;
-                MEM[store_address] = (signed<32>)X[rs2 % RFS];
+                MEM[store_address+3:store_address] = (signed<32>)X[rs2 % RFS];
             }
         }
 
@@ -358,7 +358,7 @@ InstructionSet RV64I extends RV32I {
             assembly:"{name(rd)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 % RFS] + (signed<12>)imm;
-                unsigned<32> res = (unsigned<32>)MEM[offs];
+                unsigned<32> res = (unsigned<32>)MEM[offs+3:offs];
                 if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)res;
             }
         }
@@ -368,7 +368,7 @@ InstructionSet RV64I extends RV32I {
             assembly:"{name(rd)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 % RFS] + (signed)imm;
-                signed<64> res = (signed<64>)MEM[offs];
+                signed<64> res = (signed<64>)MEM[offs+7:offs];
                 if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)res;
             }
         }
@@ -378,7 +378,7 @@ InstructionSet RV64I extends RV32I {
             assembly:"{name(rs2)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 % RFS] + (signed)imm;
-                MEM[offs] = (unsigned<XLEN>)X[rs2 % RFS];
+                MEM[offs+7:offs] = (unsigned<XLEN>)X[rs2 % RFS];
             }
         }
 
