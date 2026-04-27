@@ -88,7 +88,7 @@ InstructionSet RV32IC extends RV32I {
             behavior: raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
         }
 
-        CSRLI {//(RV32 nse)
+        CSRLI [[enable=XLEN==32]] {//(RV32 nse)
             encoding: 3'b100 :: 1'b0 :: 2'b00 :: rs1[2:0] :: shamt[4:0] :: 2'b01;
             assembly: "{name(8+rs1)}, {shamt}";
             behavior: {
@@ -96,7 +96,7 @@ InstructionSet RV32IC extends RV32I {
             }
         }
 
-        CSRAI {//(RV32)
+        CSRAI [[enable=XLEN==32]] {//(RV32)
             encoding: 3'b100 :: 1'b0 :: 2'b01 :: rs1[2:0] :: shamt[4:0] :: 2'b01;
             assembly: "{name(8+rs1)}, {shamt}";
             behavior: {
@@ -166,7 +166,7 @@ InstructionSet RV32IC extends RV32I {
             behavior: if (X[rs1 + 8] != 0) PC = PC + (signed<9>)imm;
         }
 
-        CSLLI {//(RV32)
+        CSLLI [[enable=XLEN==32]] {//(RV32)
             encoding: 3'b000 :: 1'b0 :: rs1[4:0] :: nzuimm[4:0] :: 2'b10;
             assembly: "{name(rs1)}, {nzuimm}";
             behavior: if (nzuimm) X[rs1 % RFS] = X[rs1 % RFS] << nzuimm;
