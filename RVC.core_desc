@@ -21,7 +21,7 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{name(8+rd)}, {uimm:#05x}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1 + 8] + uimm;
-                X[rd + 8] = (signed<32>)MEM[load_address];
+                X[rd + 8] = (signed<32>)MEM[load_address+3:load_address];
             }
         }
 
@@ -30,7 +30,7 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{name(8+rs2)}, {uimm:#05x}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1 + 8] + uimm;
-                MEM[load_address] = (signed<32>)X[rs2 + 8];
+                MEM[load_address+3:load_address] = (signed<32>)X[rs2 + 8];
             }
         }
 
@@ -177,7 +177,8 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{name(rd)}, sp, {uimm:#05x}";
             behavior: {
                 if(rd % RFS) {
-                    signed<32> res = MEM[X[2] + uimm];
+                    unsigned<XLEN> offs = (unsigned<XLEN>)(X[2] + uimm);
+                    signed<32> res = MEM[offs+3:offs];
                     X[rd % RFS] = (signed<XLEN>)res;
                 } else
                     raise(0,2);
@@ -232,7 +233,7 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{name(rs2)}, {uimm:#05x}(sp)";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                MEM[offs] = (unsigned<32>)X[rs2 % RFS];
+                MEM[offs+3:offs] = (unsigned<32>)X[rs2 % RFS];
             }
         }
 
@@ -250,7 +251,7 @@ InstructionSet RV32FC extends RV32F {
             assembly:"f(8+{rd}), {uimm}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8]+uimm;
-                unsigned<32> res = (unsigned<32>)MEM[offs];
+                unsigned<32> res = (unsigned<32>)MEM[offs+3:offs];
                 if (FLEN == 32)
                     F[rd + 8] = res;
                 else { // NaN boxing
@@ -264,7 +265,7 @@ InstructionSet RV32FC extends RV32F {
             assembly:"f(8+{rs2}), {uimm}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8] + uimm;
-                MEM[offs] = (unsigned<32>)F[rs2 + 8];
+                MEM[offs+3:offs] = (unsigned<32>)F[rs2 + 8];
             }
         }
 
@@ -273,7 +274,7 @@ InstructionSet RV32FC extends RV32F {
             assembly:"f {rd}, {uimm}(x2)";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                unsigned<32> res = (unsigned<32>)MEM[offs];
+                unsigned<32> res = (unsigned<32>)MEM[offs+3:offs];
                 if (FLEN == 32)
                     F[rd] = res;
                 else { // NaN boxing
@@ -287,7 +288,7 @@ InstructionSet RV32FC extends RV32F {
             assembly:"f {rs2}, {uimm}(x2), ";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                MEM[offs] = (unsigned<32>)F[rs2];
+                MEM[offs+3:offs] = (unsigned<32>)F[rs2];
             }
         }
     }
@@ -300,7 +301,7 @@ InstructionSet RV32DC extends RV32D {
             assembly:"f(8+{rd}), {uimm}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8] + uimm;
-                unsigned<64> res = (unsigned<64>)MEM[offs];
+                unsigned<64> res = (unsigned<64>)MEM[offs+7:offs];
                 if (FLEN == 64)
                     F[rd + 8] = res;
                 else { // NaN boxing
@@ -314,7 +315,7 @@ InstructionSet RV32DC extends RV32D {
             assembly:"f(8+{rs2}), {uimm}({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8] + uimm;
-                MEM[offs] = (unsigned<64>)F[rs2 + 8];
+                MEM[offs+7:offs] = (unsigned<64>)F[rs2 + 8];
             }
         }
 
@@ -323,7 +324,7 @@ InstructionSet RV32DC extends RV32D {
             assembly:"f {rd}, {uimm}(x2)";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                unsigned<64> res = (unsigned<64>)MEM[offs];
+                unsigned<64> res = (unsigned<64>)MEM[offs+7:offs];
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -337,7 +338,7 @@ InstructionSet RV32DC extends RV32D {
             assembly:"f {rs2}, {uimm}(x2), ";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                MEM[offs] = (unsigned<64>)F[rs2];
+                MEM[offs+7:offs] = (unsigned<64>)F[rs2];
             }
         }
     }
@@ -375,7 +376,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rd)}, {uimm},({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8] + uimm;
-                X[rd + 8] = (signed<64>)MEM[offs];
+                X[rd + 8] = (signed<64>)MEM[offs+7:offs];
             }
         }
 
@@ -384,7 +385,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rs2)}, {uimm},({name(8+rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 + 8] + uimm;
-                MEM[offs]= (unsigned<64>)X[rs2 + 8];
+                MEM[offs+7:offs]= (unsigned<64>)X[rs2 + 8];
             }
         }
 
@@ -417,7 +418,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(rd)}, {uimm}(sp)";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                signed<64> res = MEM[offs];
+                signed<64> res = MEM[offs+7:offs];
 
                 if (rd % RFS)
                     X[rd % RFS] = res;
@@ -431,7 +432,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(rs2)}, {uimm}(sp)";
             behavior: {
                 unsigned<XLEN> offs = X[2] + uimm;
-                MEM[offs] = (unsigned<64>)X[rs2 % RFS];
+                MEM[offs+7:offs] = (unsigned<64>)X[rs2 % RFS];
         	}
 		}
     }
