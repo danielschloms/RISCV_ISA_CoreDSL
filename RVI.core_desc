@@ -327,12 +327,12 @@ InstructionSet RV32I extends RISCVBase {
         }
 
         ECALL [[no_cont]] {
-            encoding: 0b000000000000 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
+            encoding: 12'b000000000000 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
             behavior: raise(0, 11);
         }
 
         EBREAK [[no_cont]] {
-            encoding: 0b000000000001 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
+            encoding: 12'b000000000001 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
             behavior: raise(0, RV_CAUSE_BREAKPOINT);
         }
         MRET[[no_cont]] {
@@ -383,19 +383,19 @@ InstructionSet RV64I extends RV32I {
         }
 
         SLLI {
-            encoding: 0b000000 :: shamt[5:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0010011;
+            encoding: 6'b000000 :: shamt[5:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0010011;
             assembly:"{name(rd)}, {name(rs1)}, {shamt}";
             behavior: if ((rd % RFS) != 0) X[rd % RFS] = X[rs1 % RFS] << shamt;
         }
 
         SRLI {
-            encoding: 0b000000 :: shamt[5:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0010011;
+            encoding: 6'b000000 :: shamt[5:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0010011;
             assembly:"{name(rd)}, {name(rs1)}, {shamt}";
             behavior: if ((rd % RFS) != 0) X[rd % RFS] = X[rs1 % RFS] >> shamt;
         }
 
         SRAI {
-            encoding: 0b010000 :: shamt[5:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0010011;
+            encoding: 6'b010000 :: shamt[5:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0010011;
             assembly:"{name(rd)}, {name(rs1)}, {shamt}";
             behavior: if ((rd % RFS) != 0) X[rd % RFS] = ((signed)X[rs1 % RFS]) >> shamt;
         }
