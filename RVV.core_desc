@@ -126,150 +126,150 @@ InstructionSet RVZve32f extends RVZve32x, RV32F {
     functions {
         // 13. Vector Floating-Point Instructions
         // 13.2. Vector Single-Width Floating-Point Add/Subtract Instructions
-        extern unsigned<8> vfadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfadd_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfsub_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<64> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfrsub_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfadd_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfsub_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfrsub_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.3. Vector Widening Floating-Point Add/Subtract Instructions
-        extern unsigned<8> vfwadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwadd_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwsub_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwadd_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwadd_wf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwsub_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwsub_wf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwadd_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwsub_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwadd_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwadd_wf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwsub_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwsub_wf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.4. Vector Single-Width Floating-Point Multiply/Divide Instructions
-        extern unsigned<8> vfmul_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmul_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfdiv_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfdiv_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfrdiv_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmul_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmul_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfdiv_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfdiv_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfrdiv_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.5. Vector Widening Floating-Point Multiply
-        extern unsigned<8> vfwmul_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwmul_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwmul_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwmul_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.6. Vector Single-Width Floating-Point Fused Multiply-Add Instructions
-        extern unsigned<8> vfmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmacc_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfnmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfnmacc_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfmsac_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmsac_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfnmsac_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfnmsac_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfmadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmadd_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfnmadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfnmadd_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfmsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmsub_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfnmsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfnmsub_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmacc_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfnmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfnmacc_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmsac_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmsac_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfnmsac_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfnmsac_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmadd_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfnmadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfnmadd_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmsub_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfnmsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfnmsub_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.7. Vector Widening Floating-Point Fused Multiply-Add Instructions
-        extern unsigned<8> vfwmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwmacc_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwnmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwnmacc_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwmsac_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwmsac_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfwnmsac_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwnmsac_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwmacc_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwnmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwnmacc_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwmsac_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwmsac_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfwnmsac_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwnmsac_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.8. Vector Floating-Point Square-Root Instruction
-        extern unsigned<8> vfsqrt_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfsqrt_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.9. Vector Floating-Point Reciprocal Square-Root Estimate Instruction
-        extern unsigned<8> vfrsqrt7_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfrsqrt7_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.10. Vector Floating-Point Reciprocal Estimate Instruction
-        extern unsigned<8> vfrec7_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfrec7_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.11. Vector Floating-Point MIN/MAX Instructions
-        extern unsigned<8> vfmin_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmin_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfmax_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfmax_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmin_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmin_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfmax_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfmax_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.12. Vector Floating-Point Sign-Injection Instructions
-        extern unsigned<8> vfsgnj_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfsgnj_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfsgnjn_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfsgnjn_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vfsgnjx_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfsgnjx_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfsgnj_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfsgnj_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfsgnjn_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfsgnjn_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vfsgnjx_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfsgnjx_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.13. Vector Floating-Point Compare Instructions
-        extern unsigned<8> vmfeq_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vmfeq_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vmfne_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vmfne_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vmflt_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vmflt_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vmfle_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vmfle_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vmfgt_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vmfge_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmfeq_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vmfeq_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmfne_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vmfne_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmflt_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vmflt_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmfle_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vmfle_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmfgt_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vmfge_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 13.14. Vector Floating-Point Classify Instruction
-        extern unsigned<8> vfclass_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfclass_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.15. Vector Floating-Point Merge Instruction
-        extern unsigned<8> vfmerge_vfm(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vfmerge_vfm(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 13.16. Vector Floating-Point Move Instruction
-        extern unsigned<8> vfmv_v_f(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vfmv_v_f(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 13.17. Single-Width Floating-Point/Integer Type-Convert Instructions
-        extern unsigned<8> vfcvt_xu_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfcvt_x_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfcvt_rtz_xu_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfcvt_rtz_x_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfcvt_f_xu_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfcvt_f_x_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_xu_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_x_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_rtz_xu_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_rtz_x_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_f_xu_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfcvt_f_x_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.18. Widening Floating-Point/Integer Type-Convert Instructions
-        extern unsigned<8> vfwcvt_xu_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_x_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_rtz_xu_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_rtz_x_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_f_xu_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_f_x_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwcvt_f_f_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_xu_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_x_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_rtz_xu_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_rtz_x_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_f_xu_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_f_x_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwcvt_f_f_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 13.19. Narrowing Floating-Point/Integer Type-Convert Instructions
-        extern unsigned<8> vfncvt_xu_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_x_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_rtz_xu_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_rtz_x_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_f_xu_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_f_x_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_f_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfncvt_rod_f_f_w(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_xu_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_x_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_rtz_xu_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_rtz_x_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_f_xu_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_f_x_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_f_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfncvt_rod_f_f_w(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 14. Vector Reduction Operations
         // 14.3. Vector Single-Width Floating-Point Reduction Instructions
-        extern unsigned<8> vfredosum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfredusum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfredmax_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfredmin_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfredosum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfredusum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfredmax_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfredmin_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 14.4. Vector Widening Floating-Point Reduction Instructions
-        extern unsigned<8> vfwredosum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vfwredusum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwredosum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vfwredusum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
 
         // 16.2. Floating-Point Scalar Move Instructions
-        extern unsigned<8> vfmv_f_s(unsigned char* pV, unsigned char* pF, unsigned<16> pVTYPE, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
-        extern unsigned<8> vfmv_s_f(unsigned char* pV, unsigned char* pF, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
+        extern unsigned<8> vfmv_f_s(void* pV, void* pF, unsigned<16> pVTYPE, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
+        extern unsigned<8> vfmv_s_f(void* pV, void* pF, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
 
         // 16.3. Vector Slide Instructions
-        extern unsigned<8> vfslide1up_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
-        extern unsigned<8> vfslide1down_vf(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
+        extern unsigned<8> vfslide1up_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
+        extern unsigned<8> vfslide1down_vf(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pFLEN);
     }
 
     instructions {
@@ -2999,29 +2999,29 @@ InstructionSet RVZve32x extends RVVBase {
 // No eew=64
     functions {
 
-        extern unsigned<8> etiss_vload_encoded_unitstride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_encoded_unitstride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_encoded_unitstride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_encoded_unitstride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_mask(unsigned char* pV, unsigned<8> pVm, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_mask(unsigned char* pV, unsigned<8> pVm, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_mask(void* pV, unsigned<8> pVm, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_mask(void* pV, unsigned<8> pVm, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_encoded_stride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_encoded_stride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_encoded_stride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_encoded_stride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_encoded_index(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_encoded_index(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_encoded_index(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_encoded_index(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_segment_unitstride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8>pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_segment_unitstride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8>pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_segment_unitstride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8>pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_segment_unitstride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8>pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_segment_stride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_segment_stride(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_segment_stride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_segment_stride(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, signed<16> pStride) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vload_segment_index(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vstore_segment_index(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_segment_index(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_segment_index(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<64> pMSTART, unsigned<8> pVs2) [[etiss_needs_arch]];
 
-        extern unsigned<8> etiss_vstore_registers(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<64> pMSTART) [[etiss_needs_arch]];
-        extern unsigned<8> etiss_vload_registers(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vstore_registers(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pNF, unsigned<8> pVs3, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<64> pMSTART) [[etiss_needs_arch]];
+        extern unsigned<8> etiss_vload_registers(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<16> pEEW, unsigned<8> pNF, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<64> pMSTART) [[etiss_needs_arch]];
 
         // TODO: Divide into sections
         // Zve32x:
@@ -3035,290 +3035,290 @@ InstructionSet RVZve32x extends RVVBase {
 
         // 11. Vector Integer Arithmetic Instructions
         // 11.1. Vector Single-Width Integer Add and Subtract
-        extern unsigned<8> vadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vadd_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vadd_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vrsub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vrsub_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vadd_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vadd_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vrsub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vrsub_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 11.2. Vector Widening Integer Add/Subtract
-        extern unsigned<8> vwaddu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwaddu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwsubu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwsubu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwadd_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwsub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwaddu_w_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwaddu_w_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwsubu_w_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwsubu_w_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwadd_w_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwadd_w_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwsub_w_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwsub_w_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwaddu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwaddu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwsubu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwsubu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwadd_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwsub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwaddu_w_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwaddu_w_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwsubu_w_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwsubu_w_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwadd_w_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwadd_w_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwsub_w_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwsub_w_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.3. Vector Integer Extension
-        extern unsigned<8> vext_vf(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> extension_encoding, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vext_vf(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> extension_encoding, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 11.4. Vector Integer Add-with-Carry / Subtract-with-Borrow Instructions
-        extern unsigned<8> vadc_vvm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vadc_vim(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vadc_vxm(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vadc_vvm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vadc_vim(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vadc_vxm(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
         // vmadc_vvm: _vv version with vm = 0
         // vmadc_vim: _vi version with vm = 0
         // vmadc_vxm: _vx version with vm = 0
-        extern unsigned<8> vmadc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmadc_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmadc_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsbc_vvm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsbc_vxm(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmadc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmadc_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmadc_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsbc_vvm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsbc_vxm(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
         // vmsbc_vvm: _vv version with vm = 0
         // vmsbc_vxm: _vx version with vm = 0
-        extern unsigned<8> vmsbc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsbc_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsbc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsbc_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.5. Vector Bitwise Logical Instructions
-        extern unsigned<8> vand_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vand_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vand_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vor_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vor_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vor_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vxor_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vxor_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vxor_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vand_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vand_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vand_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vor_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vor_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vor_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vxor_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vxor_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vxor_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.6. Vector Single-Width Shift Instructions
-        extern unsigned<8> vsll_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsll_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsll_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsrl_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsrl_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsrl_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsra_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsra_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsra_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsll_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsll_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsll_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsrl_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsrl_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsrl_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsra_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsra_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsra_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.7. Vector Narrowing Integer Right Shift Instructions
-        extern unsigned<8> vnsrl_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnsrl_wi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnsrl_wx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vnsra_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnsra_wi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnsra_wx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnsrl_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnsrl_wi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnsrl_wx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnsra_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnsra_wi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnsra_wx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.8. Vector Integer Compare Instructions
-        extern unsigned<8> vmseq_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmseq_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmseq_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsne_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsne_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsne_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsltu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsltu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmslt_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmslt_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsleu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsleu_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsleu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsle_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsle_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsle_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsgtu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsgtu_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmsgt_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmsgt_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmseq_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmseq_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmseq_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsne_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsne_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsne_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsltu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsltu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmslt_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmslt_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsleu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsleu_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsleu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsle_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsle_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsle_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsgtu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsgtu_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsgt_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmsgt_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 11.9. Vector Integer Min/Max Instructions
-        extern unsigned<8> vmin_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmin_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vminu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vminu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmax_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmax_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmaxu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmaxu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmin_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmin_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vminu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vminu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmax_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmax_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmaxu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmaxu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.10. Vector Single-Width Integer Multiply Instructions
-        extern unsigned<8> vmul_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmul_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmulh_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmulh_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmulhu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmulhu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmulhsu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmulhsu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmul_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmul_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmulh_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmulh_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmulhu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmulhu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmulhsu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmulhsu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.11. Vector Integer Divide Instructions
-        extern unsigned<8> vdiv_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vdiv_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vdivu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vdivu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vrem_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vrem_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vremu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vremu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vdiv_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vdiv_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vdivu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vdivu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vrem_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vrem_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vremu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vremu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.12. Vector Widening Integer Multiply Instructions
-        extern unsigned<8> vwmul_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmul_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwmulu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmulu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwmulsu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmulsu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmul_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmul_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmulu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmulu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmulsu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmulsu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.13. Vector Single-Width Integer Multiply-Add Instructions
-        extern unsigned<8> vmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmacc_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vnmsac_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnmsac_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmadd_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vnmsub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vnmsub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmacc_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnmsac_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnmsac_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmadd_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vnmsub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vnmsub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.14. Vector Widening Integer Multiply-Add Instructions
-        extern unsigned<8> vwmaccu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmaccu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwmacc_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmacc_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwmaccsu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwmaccsu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vwmaccus_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmaccu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmaccu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmacc_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmacc_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmaccsu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwmaccsu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vwmaccus_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.15. Vector Integer Merge Instructions
-        extern unsigned<8> vmerge_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmerge_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmerge_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmerge_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmerge_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmerge_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 11.16. Vector Integer Move Instructions
-        extern unsigned<8> vmv_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmv_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmv_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmv_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmv_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmv_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 12. Vector Fixed-Point Arithmetic Instructions
         // 12.1 Vector Single-Width Saturating Add and Subtract
-        extern unsigned<8> vsaddu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsaddu_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsaddu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vsadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsadd_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vsadd_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vssubu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vssubu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vssub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vssub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsaddu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsaddu_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsaddu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vsadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsadd_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vsadd_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vssubu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vssubu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vssub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vssub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 12.2. Vector Single-Width Averaging Add and Subtract
-        extern unsigned<8> vaaddu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vaaddu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vaadd_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vaadd_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vasubu_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vasubu_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vasub_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vasub_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vaaddu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vaaddu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vaadd_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vaadd_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vasubu_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vasubu_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vasub_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vasub_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 12.3. Vector Single-Width Fractional Multiply with Rounding and Saturation
-        extern unsigned<8> vsmul_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vsmul_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vsmul_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vsmul_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 12.4. Vector Single-Width Scaling Shift Instructions
-        extern unsigned<8> vssrl_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vssrl_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vssrl_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vssra_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vssra_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vssra_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vssrl_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vssrl_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vssrl_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vssra_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vssra_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vssra_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 12.5. Vector Narrowing Fixed-Point Clip Instructions
-        extern unsigned<8> vnclipu_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vnclipu_wi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vnclipu_wx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
-        extern unsigned<8> vnclip_wv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vnclip_wi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
-        extern unsigned<8> vnclip_wx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vnclipu_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vnclipu_wi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vnclipu_wx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
+        extern unsigned<8> vnclip_wv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vnclip_wi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pRm);
+        extern unsigned<8> vnclip_wx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN, unsigned<8> pRm);
 
         // 14. Vector Reduction Operations (Integer Instructions)
         // 14.1. Vector Single-Width Integer Reduction Instructions
-        extern unsigned<8> vredsum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredmaxu_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredmax_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredminu_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredmin_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredand_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredor_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vredxor_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredsum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredmaxu_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredmax_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredminu_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredmin_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredand_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredor_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vredxor_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 14.2. Vector Widening Integer Reduction Instructions
-        extern unsigned<8> vwredsumu_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vwredsum_vs(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwredsumu_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vwredsum_vs(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15. Vector Mask Instructions
         // 15.1. Vector Mask-Register Logical Instructions
-        extern unsigned<8> vmand_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmnand_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmandn_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmxor_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmor_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmnor_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmorn_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vmxnor_mm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmand_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmnand_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmandn_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmxor_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmor_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmnor_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmorn_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmxnor_mm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15.2. Vector count population in mask vcpop.m
-        extern unsigned<8> vcpop_m(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vcpop_m(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 15.3. vfirst find-first-set mask bit
-        extern unsigned<8> vfirst_m(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vfirst_m(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pRd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 15.4. vmsbf.m set-before-first mask bit
-        extern unsigned<8> vmsbf_m(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsbf_m(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15.5. vmsif.m set-including-first mask bit
-        extern unsigned<8> vmsif_m(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsif_m(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15.6. vmsof.m set-only-first mask bit
-        extern unsigned<8> vmsof_m(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmsof_m(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15.8. Vector Iota Instruction
-        extern unsigned<8> viota_m(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> viota_m(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 15.9. Vector Element Index Instruction
-        extern unsigned<8> vid_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vid_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 16. Vector Permutation Instructions
         // Zve32x, Zve64x: no floating-point operands
 
         // 16.1. Integer Scalar Move Instructions
-        extern unsigned<8> vmv_xs(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pRd, unsigned<8> pVs2, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vmv_sx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmv_xs(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pRd, unsigned<8> pVs2, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vmv_sx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 16.2. Floating-Point Scalar Move Instructions
         // Not in Zve32x
 
         // 16.3. Vector Slide Instructions (Integer)
-        extern unsigned<8> vslideup_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vslideup_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vslidedown_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vslidedown_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vslide1up_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
-        extern unsigned<8> vslide1down_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vslideup_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vslideup_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vslidedown_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vslidedown_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vslide1up_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vslide1down_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 16.4. Vector Register Gather Instructions
-        extern unsigned<8> vrgather_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vrgatherei16_vv(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vrgather_vi(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
-        extern unsigned<8> vrgather_vx(unsigned char* pV, unsigned char* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
+        extern unsigned<8> vrgather_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vrgatherei16_vv(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vrgather_vi(void* pV, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vrgather_vx(void* pV, void* pR, unsigned<16> pVTYPE, unsigned<8> pVm, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pRs1, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL, unsigned<8> pXLEN);
 
         // 16.5. Vector Compress Instruction
-        extern unsigned<8> vcompress_vm(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vcompress_vm(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs1, unsigned<8> pVs2, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
         // 16.6. Whole Vector Register Move
-        extern unsigned<8> vmvr_v(unsigned char* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
+        extern unsigned<8> vmvr_v(void* pV, unsigned<16> pVTYPE, unsigned<8> pVd, unsigned<8> pVs2, unsigned<8> pVimm, unsigned<16> pVSTART, unsigned<32> pVLEN, unsigned<32> pVL);
 
     }
     instructions {
