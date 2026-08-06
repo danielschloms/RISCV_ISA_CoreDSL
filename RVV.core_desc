@@ -3332,10 +3332,14 @@ InstructionSet RVZve32x extends RVVBase {
                 //     raise(0, 2);  // vpu not enabled
                 // }
 
-                unsigned<3> sew[3]  = vtype_extractSEW(zimm);
-                unsigned<3> lmul[3] = vtype_extractLMUL(zimm);
-                unsigned<1> vta[1]  = vtype_extractTA(zimm);
-                unsigned<1> vma[1]  = vtype_extractMA(zimm);
+                // unsigned<3> sew[3]  = vtype_extractSEW(zimm);
+                // unsigned<3> lmul[3] = vtype_extractLMUL(zimm);
+                // unsigned<1> vta[1]  = vtype_extractTA(zimm);
+                // unsigned<1> vma[1]  = vtype_extractMA(zimm);
+                unsigned<3> sew  = vtype_extractSEW(zimm);
+                unsigned<3> lmul = vtype_extractLMUL(zimm);
+                unsigned<1> vta  = vtype_extractTA(zimm);
+                unsigned<1> vma  = vtype_extractMA(zimm);
 
                 unsigned<32> vtype_result = zimm;
                 unsigned<32> _vlmax = 0;
@@ -3409,10 +3413,14 @@ InstructionSet RVZve32x extends RVVBase {
             assembly:"{name(rd)}, {uimm}, {vtypei}";
             behavior: {
                 // TODO: Missing
-                unsigned<3> sew[3]  = vtype_extractSEW(vtypei);
-                unsigned<3> lmul[3] = vtype_extractLMUL(vtypei);
-                unsigned<1> vta[1]  = vtype_extractTA(vtypei);
-                unsigned<1> vma[1]  = vtype_extractMA(vtypei);
+                // unsigned<3> sew[3]  = vtype_extractSEW(vtypei);
+                // unsigned<3> lmul[3] = vtype_extractLMUL(vtypei);
+                // unsigned<1> vta[1]  = vtype_extractTA(vtypei);
+                // unsigned<1> vma[1]  = vtype_extractMA(vtypei);
+                unsigned<3> sew  = vtype_extractSEW(vtypei);
+                unsigned<3> lmul = vtype_extractLMUL(vtypei);
+                unsigned<1> vta  = vtype_extractTA(vtypei);
+                unsigned<1> vma  = vtype_extractMA(vtypei);
 
                 unsigned<32> _vlmax = 0;
                 unsigned<32> vtype_result = vtypei;
@@ -3471,12 +3479,16 @@ InstructionSet RVZve32x extends RVVBase {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
 
-                unsigned<XLEN> zimm[XLEN] = X[rs2];
                 // unsigned<11> zimm[11] = X[rs2];
-                unsigned<3> sew[3]  =  vtype_extractSEW(zimm);
-                unsigned<3> lmul[3] =  vtype_extractLMUL(zimm);
-                unsigned<1> vta[1]  =  vtype_extractTA(zimm);
-                unsigned<1> vma[1]  =  vtype_extractMA(zimm);
+                // unsigned<3> sew[3]  =  vtype_extractSEW(zimm);
+                // unsigned<3> lmul[3] =  vtype_extractLMUL(zimm);
+                // unsigned<1> vta[1]  =  vtype_extractTA(zimm);
+                // unsigned<1> vma[1]  =  vtype_extractMA(zimm);
+                unsigned<11> zimm   = X[rs2];
+                unsigned<3> sew  =  vtype_extractSEW(zimm);
+                unsigned<3> lmul =  vtype_extractLMUL(zimm);
+                unsigned<1> vta  =  vtype_extractTA(zimm);
+                unsigned<1> vma  =  vtype_extractMA(zimm);
 
                 unsigned<XLEN> _vlmax = 0;
                 // unsigned<XLEN> _illmask = 0;
