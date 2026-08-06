@@ -9184,7 +9184,7 @@ InstructionSet RVVBase extends Zicsr {
         unsigned<32>& VLENB_CSR = CSR[VLENB_ADDR];
 
         // vector register address space
-        extern unsigned char V[VLEN /8 * 32];
+        extern unsigned char V[VLEN /8 * 32] [[is_vector_reg]];
 
         // fixed-point saturation return code
         unsigned<32> NO_EXCEPT_FP_SAT = 1;
